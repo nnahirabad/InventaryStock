@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InventarioComercio.Domain\InventarioComercio.Domain.csproj" />
+    <ProjectReference Include="..\InventarioComercio.Infrastructure\InventarioComercio.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    
+  </ItemGroup>
+
+</Project>
