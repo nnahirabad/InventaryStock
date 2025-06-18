@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Inicio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="productos.css" />
+</head>
+<body>
+    <!-- Barra navegador -->
+     <div class="container-fluid">
+      <nav id="nav" class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="../Inicio/inicio.html">Inicio</a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"> </ul>
+        
+            <button class="btn btn-outline-success" onclick="CerrarSesion()" type="submit">Cerrar sesion</button>
+
+              
+            
+          </div>
+        </div>
+      </nav>
+    </div>
+
+
+    
+
+
+  <div class="container">
+    <h2>Productos</h2>
+  <div class="container table-container shadow-lg p3 mb-5 bg-body rounded">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Categoria</th>
+            <th>Stock Actual</th>
+            <th>Stock Minimo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="listado-products"></tbody>
+      </table>
+      <button class="btn btn-success btn-nuevo-curso" onclick="movimiento()">
+        Movimiento
+      </button>
+
+  </div>
+
+  <script>
+    
+    document.addEventListener("DOMContentLoaded", async function () {
+        
+    try{
+        // Hacemos consulta a la api. 
+          const response = await fetch( 
+            "https://localhost:7262/api/Product",
+            {
+              method: "GET",
+              headers: {
+                
+                "Content-Type": "application/json",
+              },
+            }
+          );
+           if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`);
+           }
+
+          const productos = await response.json();
+          
+
+          console.log("Listado de productos" , productos);
+
+          const tbody = document.getElementById("listado-products"); 
+
+           productos.forEach((producto) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                      <td>${producto.codigo}</td>
+                      <td>${producto.nombre}</td>
+                      <td>${producto.descripcion}</td>
+                      <td>${producto.categoria}</td>
+                      <td>${producto.stockActual}</td>
+                      <td>${producto.stockMinimo}</td>
+                      ` ; 
+                      tbody.appendChild(row); }); 
+
+
+
+            }
+    catch(error){
+         console.error("Error al obtener los productos", error);
+
+    }
+
+
+
+    })
+
+   function CerrarSesion(){
+      
+          window.location.href = "../Login/login.html"; 
+        
+        
+      }
+
+      function movimiento(){
+        window.location.href = "../Movimiento/movimiento.html"; 
+      }
+
+  </script>
+</body>
+</html>

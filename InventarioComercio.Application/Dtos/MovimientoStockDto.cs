@@ -8,7 +8,7 @@ namespace InventarioComercio.Application.Dtos
 {
     public  class MovimientoStockDto
     {
-
+        
         public Guid Id { get; set; }
         public DateTime Fecha { get; set; }
         public int Cantidad { get; set; }

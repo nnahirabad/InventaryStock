@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Inicio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="inicio.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Portal Principal</h2>
+    <h3>Seleccione una opción para continuar</h3>
+    <div class="button-group mt-4">
+      <button onclick="irAControlStock()" class="btn btn-lg btn-outline-light btn-block">Control de Stock</button>
+      <button onclick="irAUsuarios()" class="btn btn-lg btn-outline-light btn-block mt-3">Usuarios</button>
+    </div>
+  </div>
+
+  <script>
+    function irAControlStock() {
+      window.location.href = "../Stock/productos.html"; // Ajustá la ruta según corresponda
+    }
+
+    function irAUsuarios() {
+      window.location.href = "../Users/users.html"; // Ajustá la ruta según corresponda
+    }
+  </script>
+</body>
+</html>

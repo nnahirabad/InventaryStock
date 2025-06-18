@@ -37,7 +37,8 @@ namespace InventarioComercio.Infrastructure.Repositories
 
         public async Task<IEnumerable<MovimientoStock>> GetAllMovimientos()
         {
-            var todos = await _context.MovimientoStocks.ToListAsync();
+            var todos = await _context.MovimientoStocks.Include(d => d.Producto).
+                ToListAsync();
             foreach (var m in todos)
             {
                 Console.WriteLine($"Movimiento: {m.Id}, Fecha: {m.Fecha}");

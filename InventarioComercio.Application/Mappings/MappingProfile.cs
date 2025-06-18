@@ -33,7 +33,9 @@ namespace InventarioComercio.Application.Mappings
             CreateMap<Producto, UpdateProductCommand>().ReverseMap();
             CreateMap<Producto, DeleteProductCommand>().ReverseMap();
 
-            CreateMap<Producto, ProductoDto>(); 
+            CreateMap<Producto, ProductoDto>()
+                .ForMember(dest => dest.Categoria, opt => opt.MapFrom(src => src.Categoria.Nombre))
+                .ReverseMap();
 
             // USUARIO 
             CreateMap<Usuario, RegisterCommand>();
